@@ -3,7 +3,6 @@ import {Chart as ChartJS ,BarElement, CategoryScale, LinearScale} from 'chart.js
 import {Bar} from 'react-chartjs-2'
 import { useDispatch, useSelector } from 'react-redux'
 import { getalltask } from '../../redux/actions/taskActions'
-import moment from 'moment'
 ChartJS.register(
   BarElement,
   CategoryScale,
