@@ -1,22 +1,24 @@
 import{
-   
+  SET_LOADING,
     AJOUT_TASK_SUCCESS,
     AJOUT_FAIL,
     GET_ALL_TASK_SUCCESS,
     DELETE_TASK_SUCCESS,
-    DELETE_FAIL
+  
+  
+   
 } from "../constante/taskconst"
 
 import axios from "axios";
 
 //add tasks
-export const addtask =({name,description})=>
+export const addtask =({name,description,time})=>
   async (dispatch) => {
   
  
     try {
     
-      let  {data}  = await axios.post("/task/add",{name,description});
+      let  {data}  = await axios.post("/task/add",{name,description,time});
       console.log(data) 
       dispatch({
         type:AJOUT_TASK_SUCCESS,
@@ -34,7 +36,7 @@ export const addtask =({name,description})=>
 
 //get all tasks
   export const getalltask = () => async(dispatch) =>{
-  
+  dispatch({type:SET_LOADING})
       try {
           
           const {data} = await axios.get("/task/allTask")
@@ -49,6 +51,7 @@ export const addtask =({name,description})=>
         console.log(error)
   }
   }
+ 
 //delete tasks
 
 
@@ -69,3 +72,5 @@ export const deleteTask = (id) => async (dispatch) => {
   } catch (error) {
   console.dir(error)
   }}
+
+  
